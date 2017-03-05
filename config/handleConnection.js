@@ -6,35 +6,6 @@
 
 var mysql = require('mysql');
 
-class Employee {
-    constructor(connection) {
-        this.connection = connection;
-    }
-
-    getEmployee() {
-        connection.query('CALL sp_GetEmployee();', function (error, result, fields) {
-            if (error) throw error;
-
-            if (result[0].length == 0) {
-                res.status(404).send({
-                    status: "ERROR",
-                    message: "No existe usuario en Base de Datos"
-                });
-            } else {
-                res.status(202).send({
-                    status: "SUCCESS",
-                    message: "User was found",
-                    data: result[0]
-                });
-            }
-        });
-    }
-
-    disconnect() {
-        this.connection.end();
-    }
-}
-
 module.exports.connect = (connectionSettings) => {
 
     return new Promise((resolve, reject) => {

@@ -3,13 +3,17 @@
  */
 
 var config = require("./config/config");
-var employee = require("./routes/Employee");
+var handleConnection = require("./config/handleConnection");
+var Employee = require("./entity/EmployeeEntity");
+var express = require("express");
+var app = express();
 
-console.log(config.port);
-console.log(config.db);
-console.log(config.db.host);
+var employee = require("./routes/employee");
 
-employee.connect({
+
+
+
+handleConnection.connect({
     host: config.db.host,
     user: config.db.user,
     password: config.db.password,
@@ -17,6 +21,8 @@ employee.connect({
     port: config.db.port
 }).then(function (connectionObject) {
     console.log(connectionObject);
+
+    employee(app, new Employee(connectionObject));
 });
 
 

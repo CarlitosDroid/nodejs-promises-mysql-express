@@ -1,0 +1,30 @@
+{
+  "name": "api_rest_our_event",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarlitosDroid/nodejs-usage-promises-mysql.git"
+  },
+  "keywords": [
+    "nodejs",
+    "mysql",
+    "promises",
+    "callback",
+    "api",
+    "rest"
+  ],
+  "author": "UNFV 2017",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarlitosDroid/nodejs-usage-promises-mysql/issues"
+  },
+  "homepage": "https://github.com/CarlitosDroid/nodejs-usage-promises-mysql#readme",
+  "dependencies": {
+    "express": "^4.15.0"
+  }
+}
