@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/CarlitosDroid/nodejs-usage-promises-mysql#readme",
   "dependencies": {
-    "express": "^4.15.0"
+    "express": "^4.15.0",
+    "mysql": "^2.13.0"
   }
 }

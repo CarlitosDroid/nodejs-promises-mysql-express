@@ -1,0 +1,14 @@
+version: '2'
+services:
+  security:
+    build: ./our-event-service
+    ports:
+     - "8123:8123"
+    depends_on:
+     - db
+    environment:
+     - DATABASE_HOST=db
+    volumes:
+     - ./our-event-service/api:/app/api
+  db:
+    build: ./database-service

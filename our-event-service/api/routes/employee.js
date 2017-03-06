@@ -5,7 +5,7 @@
 'use strict';
 
 module.exports = (app, employeeEntity) => {
-    router.get('/', function (req, res, next) {
+    app.get('/', function (req, res, next) {
 
         employeeEntity.getEmployee().then((result)=>{
             res.status(200).send(result);
