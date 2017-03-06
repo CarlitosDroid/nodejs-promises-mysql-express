@@ -24,13 +24,6 @@ module.exports.connect = (connectionSettings) => {
             port: 3306
         });
 
-        connection.connect(function (err) {
-            if (err) {
-                reject("error connecting " + err.stack);
-                return null;
-            }
-            console.log("connected as id " + this.threadId);
-            resolve(connection);
-        });
+        resolve(connection);
     });
 };

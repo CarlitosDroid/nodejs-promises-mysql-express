@@ -4,8 +4,6 @@
 
 'use strict';
 
-var mysql = require("mysql");
-
 class EmployeeEntity {
     constructor(connection) {
         this.connection = connection;
@@ -37,28 +35,8 @@ class EmployeeEntity {
     }
 }
 
-module.exports.initEmployee = (connectionObject) => {
-
-    return new Promise((resolve, reject) => {
-
-        if (!connectionObject.host) throw new Error("A host must be specified.");
-        if (!connectionObject.user) throw new Error("A user must be specified.");
-        if (!connectionObject.password) throw new Error("A password must be specified.");
-        if (!connectionObject.database) throw new Error("A database must be specified.");
-        if (!connectionObject.port) throw new Error("A port must be specified.");
-
-        let connection = mysql.createConnection({
-            host: process.env.DATABASE_HOST || '127.0.0.1',
-            user: 'users_service',
-            password: '123',
-            database: 'CHIRINOS',
-            port: 3306
-        });
-
-        resolve(new EmployeeEntity(connection));
-
-    });
-
+module.exports.createEmployee = (connectionObject) =>{
+    return new EmployeeEntity(connectionObject);
 };
 
 

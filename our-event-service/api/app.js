@@ -3,30 +3,28 @@
  */
 
 var config = require("./config/config");
+var handleConnection = require("./config/handleConnection");
 var EmployeeEntity = require("./entity/EmployeeEntity");
 var express = require("express");
 var app = express();
 
-var employee = require("./routes/employee");
+console.log("Connecting to service . Starting server...");
 
-console.log("Connecting to service.");
-
-EmployeeEntity.initEmployee({
+handleConnection.connect({
     host: config.db.host,
     user: config.db.user,
     password: config.db.password,
     database: config.db.database,
     port: config.db.port
-}).then(function (employeeObject) {
+}).then(function (connectionObject) {
 
     console.log("Connected. Starting server...");
+    let employeeEntity = EmployeeEntity.createEmployee(connectionObject);
 
-    //let employeeEntity = EmployeeEntity.initEmployee(connectionObject);
-
-    employee(app, employeeObject);
+    require("./routes/employee")(app, employeeEntity);
 
     app.listen(config.port, ()=>{
-        console.log("listening by 8123 port");
+        console.log("listening by "+config.port+" port");
     });
 });
 
