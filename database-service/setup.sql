@@ -14,14 +14,14 @@ CREATE TABLE EMPLOYEE (
 )
   ENGINE = INNODB;
 
-CREATE TABLE chirinos.placelocation
+CREATE TABLE CHIRINOS.USER
 (
-  IdPlace INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  Name VARCHAR(40),
-  Latitud INT(11),
-  Longitud INT(11),
-  CreationDate DATETIME
-)
+  id_user INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(40) NOT NULL,
+  lastname VARCHAR(40) DEFAULT NULL,
+  gender CHAR NOT NULL
+);
+ALTER TABLE CHIRINOS.USER COMMENT = 'user table';
 
 CREATE TABLE chirinos.meeting_place_detail
 (
@@ -29,7 +29,16 @@ CREATE TABLE chirinos.meeting_place_detail
   description VARCHAR(50) NOT NULL,
   calification INT(11)
 );
-ALTER TABLE chirinos.meeting_place_detail COMMENT = 'meeting place detail table'
+ALTER TABLE chirinos.meeting_place_detail COMMENT = 'meeting place detail table';
+
+CREATE TABLE CHIRINOS.MEETING_PLACE
+(
+  id_place INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name VARCHAR(40) NOT NULL,
+  latitude DECIMAL(10,8) NOT NULL,
+  longitude DECIMAL(11,8) NOT NULL
+);
+ALTER TABLE CHIRINOS.MEETING_PLACE COMMENT = 'header of meeting place';
 
 
 /* INSERT DATA */
