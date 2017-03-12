@@ -23,6 +23,14 @@ CREATE TABLE chirinos.placelocation
   CreationDate DATETIME
 )
 
+CREATE TABLE chirinos.meeting_place_detail
+(
+  id_place INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  description VARCHAR(50) NOT NULL,
+  calification INT(11)
+);
+ALTER TABLE chirinos.meeting_place_detail COMMENT = 'meeting place detail table'
+
 
 /* INSERT DATA */
 INSERT INTO EMPLOYEE (FirstName, LastName, Phone, Address, City, FullName, Email, Pin, CreationDate, EmployeeCode)
