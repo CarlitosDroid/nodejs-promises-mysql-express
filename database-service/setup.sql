@@ -14,6 +14,16 @@ CREATE TABLE EMPLOYEE (
 )
   ENGINE = INNODB;
 
+CREATE TABLE chirinos.placelocation
+(
+  IdPlace INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  Name VARCHAR(40),
+  Latitud INT(11),
+  Longitud INT(11),
+  CreationDate DATETIME
+)
+
+
 /* INSERT DATA */
 INSERT INTO EMPLOYEE (FirstName, LastName, Phone, Address, City, FullName, Email, Pin, CreationDate, EmployeeCode)
 VALUES ('SYSADMIN', 'SYSADMIN', 945214775, 'Av. Alfonso Ugarte', 'Lima', 'SYSADMIN SYSADMIN', 'sysadmin@gmail.com',
@@ -29,3 +39,4 @@ DELIMITER ;
 /**Drop StoreProcedure**/
 CALL sp_GetEmployee();
 /******************************************************************/
+
