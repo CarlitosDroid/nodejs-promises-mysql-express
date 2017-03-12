@@ -46,6 +46,9 @@ INSERT INTO EMPLOYEE (FirstName, LastName, Phone, Address, City, FullName, Email
 VALUES ('SYSADMIN', 'SYSADMIN', 945214775, 'Av. Alfonso Ugarte', 'Lima', 'SYSADMIN SYSADMIN', 'sysadmin@gmail.com',
         1, '2011-12-18 13:17:17', 'SYSADMIN');
 
+INSERT INTO CHIRINOS.USER(name, lastname, gender) VALUES('Henry', 'Tacuchi', 'M');
+
+
 DROP PROCEDURE IF EXISTS sp_GetEmployee;
 DELIMITER //
 CREATE PROCEDURE sp_GetEmployee()
@@ -55,5 +58,21 @@ CREATE PROCEDURE sp_GetEmployee()
 DELIMITER ;
 /**Drop StoreProcedure**/
 CALL sp_GetEmployee();
-/******************************************************************/
+
+/**********************************CRUD CREATING PRODUCT*********************************/
+
+#INSERT NEW PRODUCT
+DROP PROCEDURE IF EXISTS sp_PostUser;
+DELIMITER //
+CREATE PROCEDURE sp_PostUser(IN _name VARCHAR(40),IN _lastname VARCHAR(40), IN _gender CHAR  )
+BEGIN
+INSERT INTO USER (name, lastname, gender)
+VALUES (_name, _lastname, _gender);
+END //
+DELIMITER ;
+
+
+
+
+
 
