@@ -14,6 +14,8 @@ CREATE TABLE EMPLOYEE (
 )
   ENGINE = INNODB;
 
+
+
 /* INSERT DATA */
 INSERT INTO EMPLOYEE (FirstName, LastName, Phone, Address, City, FullName, Email, Pin, CreationDate, EmployeeCode)
 VALUES ('SYSADMIN', 'SYSADMIN', 945214775, 'Av. Alfonso Ugarte', 'Lima', 'SYSADMIN SYSADMIN', 'sysadmin@gmail.com',
