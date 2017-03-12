@@ -46,6 +46,7 @@ INSERT INTO EMPLOYEE (FirstName, LastName, Phone, Address, City, FullName, Email
 VALUES ('SYSADMIN', 'SYSADMIN', 945214775, 'Av. Alfonso Ugarte', 'Lima', 'SYSADMIN SYSADMIN', 'sysadmin@gmail.com',
         1, '2011-12-18 13:17:17', 'SYSADMIN');
 
+
 DROP PROCEDURE IF EXISTS sp_GetEmployee;
 DELIMITER //
 CREATE PROCEDURE sp_GetEmployee()
@@ -56,4 +57,13 @@ DELIMITER ;
 /**Drop StoreProcedure**/
 CALL sp_GetEmployee();
 /******************************************************************/
+
+DROP PROCEDURE IF EXISTS sp_GetUser;
+DELIMITER //
+CREATE PROCEDURE sp_GetUser()
+  BEGIN
+    SELECT * FROM USER;
+  END //
+DELIMITER ;
+CALL sp_GetUser();
 
