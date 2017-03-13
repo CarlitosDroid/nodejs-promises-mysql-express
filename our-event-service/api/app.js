@@ -5,6 +5,7 @@
 var config = require("./config/config");
 var handleConnection = require("./config/handleConnection");
 var EmployeeEntity = require("./entity/EmployeeEntity");
+var UserEntity = require("./entity/UserEntity");
 var MeetingPlaceEntity = require("./entity/MeetingPlaceEntity");
 var express = require("express");
 var app = express();
@@ -22,9 +23,11 @@ handleConnection.connect({
     console.log("Connected. Starting server...");
     let employeeEntity = EmployeeEntity.createEmployee(connectionObject);
     let meetingPlaceEntity = MeetingPlaceEntity(connectionObject);
+    let userEntity = UserEntity(connectionObject);
 
     require("./routes/employee")(app, employeeEntity);
     require("./routes/meetingPlace")(app, meetingPlaceEntity);
+    require("./routes/user")(app, userEntity);
 
     app.listen(config.port, ()=>{
         console.log("listening by "+config.port+" port");
