@@ -27,7 +27,7 @@ handleConnection.connect({
 
     require("./routes/employee")(app, employeeEntity);
     require("./routes/meetingPlace")(app, meetingPlaceEntity);
-    //require("./routes/user")(app, userEntity);
+    require("./routes/user")(app, userEntity);
 
     app.listen(config.port, ()=>{
         console.log("listening by "+config.port+" port");
