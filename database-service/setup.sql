@@ -14,39 +14,40 @@ CREATE TABLE EMPLOYEE (
 )
   ENGINE = INNODB;
 
-CREATE TABLE CHIRINOS.USER
+CREATE TABLE USER
 (
   id_user INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR(40) NOT NULL,
   lastname VARCHAR(40) DEFAULT NULL,
   gender CHAR NOT NULL
-);
-ALTER TABLE CHIRINOS.USER COMMENT = 'user table';
+)
+  ENGINE = INNODB;
 
-CREATE TABLE chirinos.meeting_place_detail
+CREATE TABLE MEETING_PLACE_DETAIL
 (
   id_place INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
   description VARCHAR(50) NOT NULL,
   calification INT(11)
-);
-ALTER TABLE chirinos.meeting_place_detail COMMENT = 'meeting place detail table';
+)
+  ENGINE = INNODB;
 
-CREATE TABLE CHIRINOS.MEETING_PLACE
+CREATE TABLE MEETING_PLACE
 (
   id_place INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name VARCHAR(40) NOT NULL,
   latitude DECIMAL(10,8) NOT NULL,
   longitude DECIMAL(11,8) NOT NULL
-);
-ALTER TABLE CHIRINOS.MEETING_PLACE COMMENT = 'header of meeting place';
-
+)
+  ENGINE = INNODB;
 
 /* INSERT DATA */
 INSERT INTO EMPLOYEE (FirstName, LastName, Phone, Address, City, FullName, Email, Pin, CreationDate, EmployeeCode)
 VALUES ('SYSADMIN', 'SYSADMIN', 945214775, 'Av. Alfonso Ugarte', 'Lima', 'SYSADMIN SYSADMIN', 'sysadmin@gmail.com',
         1, '2011-12-18 13:17:17', 'SYSADMIN');
 
-INSERT INTO CHIRINOS.USER(name, lastname, gender) VALUES('Henry', 'Tacuchi', 'M');
+INSERT INTO USER(name, lastname, gender) VALUES('Henry', 'Tacuchi', 'M');
+
+INSERT INTO MEETING_PLACE(name, latitude, longitude) VALUES('CARLITOS', -11.970901, -77.006536);
 
 DROP PROCEDURE IF EXISTS sp_GetEmployee;
 DELIMITER //
@@ -58,16 +59,16 @@ DELIMITER ;
 /**Drop StoreProcedure**/
 CALL sp_GetEmployee();
 
-/**********************************CRUD CREATING PRODUCT*********************************/
+/**********************************CRUD USER *********************************/
 
-#INSERT NEW PRODUCT
+#INSERT NEW USER
 DROP PROCEDURE IF EXISTS sp_PostUser;
 DELIMITER //
 CREATE PROCEDURE sp_PostUser(IN _name VARCHAR(40),IN _lastname VARCHAR(40), IN _gender CHAR  )
-BEGIN
-INSERT INTO USER (name, lastname, gender)
-VALUES (_name, _lastname, _gender);
-END //
+  BEGIN
+    INSERT INTO USER (name, lastname, gender)
+    VALUES (_name, _lastname, _gender);
+  END //
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS sp_GetUser;
@@ -79,3 +80,37 @@ CREATE PROCEDURE sp_GetUser()
 DELIMITER ;
 CALL sp_GetUser();
 
+/**********************************CRUD MEETING_PLACE *********************************/
+
+#INSERT NEW MEETING_PLACE
+DROP PROCEDURE IF EXISTS sp_PostMeetingPlace;
+DELIMITER //
+CREATE PROCEDURE sp_PostMeetingPlace(IN _name VARCHAR(40),IN _latitude DECIMAL(10,8), IN _longitude DECIMAL(11,8))
+  BEGIN
+    INSERT INTO MEETING_PLACE (name, latitude, longitude)
+    VALUES (_name, _latitude, _longitude);
+  END //
+DELIMITER ;
+
+#GET ALL MEETING_PLACE
+DROP PROCEDURE IF EXISTS sp_GetMeetingPlace;
+DELIMITER //
+CREATE PROCEDURE sp_GetMeetingPlace()
+  BEGIN
+    SELECT * FROM MEETING_PLACE;
+  END //
+DELIMITER ;
+CALL sp_GetMeetingPlace();
+
+/**
+SET FOREIGN_KEY_CHECKS = 0;
+DROP TABLE EMPLOYEE;
+DROP TABLE USER;
+DROP TABLE MEETING_PLACE_DETAIL;
+DROP TABLE MEETING_PLACE;
+SET FOREIGN_KEY_CHECKS = 1;
+
+DROP PROCEDURE IF EXISTS sp_GetUserByPin;
+DROP PROCEDURE IF EXISTS sp_PostDetailSale;
+DROP PROCEDURE IF EXISTS sp_PostHeaderSale;
+**/
