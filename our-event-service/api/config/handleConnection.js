@@ -16,7 +16,7 @@ module.exports.connect = (connectionSettings) => {
         if (!connectionSettings.port) throw new Error("A port must be specified.");
 
         let connection = mysql.createConnection({
-            host: connectionSettings.host ,
+            host: connectionSettings.host,
             user: connectionSettings.user,
             password: connectionSettings.password,
             database: connectionSettings.database,
