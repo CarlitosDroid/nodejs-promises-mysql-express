@@ -5,10 +5,10 @@
 module.exports = {
     port : 8123,
     db : {
-        host: process.env.DATABASE_HOST || '127.0.0.1',
+        host: 'localhost',
         database: "CHIRINOS",
-        user: "users_service",
-        password: "123",
+        user: "root",
+        password: "",
         port: 3306
     }
 };
