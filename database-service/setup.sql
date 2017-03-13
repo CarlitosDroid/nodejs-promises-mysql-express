@@ -58,16 +58,16 @@ DELIMITER ;
 /**Drop StoreProcedure**/
 CALL sp_GetEmployee();
 
-/**********************************CRUD CREATING PRODUCT*********************************/
+/**********************************CRUD USER *********************************/
 
-#INSERT NEW PRODUCT
+#INSERT NEW USER
 DROP PROCEDURE IF EXISTS sp_PostUser;
 DELIMITER //
 CREATE PROCEDURE sp_PostUser(IN _name VARCHAR(40),IN _lastname VARCHAR(40), IN _gender CHAR  )
-BEGIN
-INSERT INTO USER (name, lastname, gender)
-VALUES (_name, _lastname, _gender);
-END //
+  BEGIN
+    INSERT INTO USER (name, lastname, gender)
+    VALUES (_name, _lastname, _gender);
+  END //
 DELIMITER ;
 
 DROP PROCEDURE IF EXISTS sp_GetUser;
@@ -79,3 +79,24 @@ CREATE PROCEDURE sp_GetUser()
 DELIMITER ;
 CALL sp_GetUser();
 
+/**********************************CRUD MEETING_PLACE *********************************/
+
+#INSERT NEW MEETING_PLACE
+DROP PROCEDURE IF EXISTS sp_PostMeetingPlace;
+DELIMITER //
+CREATE PROCEDURE sp_PostMeetingPlace(IN _name VARCHAR(40),IN _latitude DECIMAL(10,8), IN _longitude DECIMAL(11,8))
+  BEGIN
+    INSERT INTO MEETING_PLACE (name, latitude, longitude)
+    VALUES (_name, _latitude, _longitude);
+  END //
+DELIMITER ;
+
+#GET ALL MEETING_PLACE
+DROP PROCEDURE IF EXISTS sp_GetMeetingPlace;
+DELIMITER //
+CREATE PROCEDURE sp_GetMeetingPlace()
+  BEGIN
+    SELECT * FROM MEETING_PLACE;
+  END //
+DELIMITER ;
+CALL sp_GetMeetingPlace();

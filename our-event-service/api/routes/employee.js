@@ -5,7 +5,7 @@
 'use strict';
 
 module.exports = (app, employeeEntity) => {
-    app.get('/', function (req, res, next) {
+    app.get('/employee', function (req, res, next) {
 
         employeeEntity.getEmployee().then((employeeResolve)=>{
             if(employeeResolve.data.length == 0){
