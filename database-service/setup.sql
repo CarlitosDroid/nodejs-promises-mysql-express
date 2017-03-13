@@ -46,6 +46,8 @@ VALUES ('SYSADMIN', 'SYSADMIN', 945214775, 'Av. Alfonso Ugarte', 'Lima', 'SYSADM
         1, '2011-12-18 13:17:17', 'SYSADMIN');
 
 INSERT INTO USER(name, lastname, gender) VALUES('Henry', 'Tacuchi', 'M');
+INSERT INTO USER(name, lastname, gender) VALUES('Bill', 'Flores', 'M');
+INSERT INTO USER(name, lastname, gender) VALUES('Carlos', 'Matador', 'M');
 
 INSERT INTO MEETING_PLACE(name, latitude, longitude) VALUES('CARLITOS', -11.970901, -77.006536);
 
